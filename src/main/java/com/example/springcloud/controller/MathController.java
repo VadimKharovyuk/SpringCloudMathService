@@ -18,10 +18,9 @@ public class MathController {
     private MathService mathService;
 
     @GetMapping("/sections")
-    public List<Questions> getQuestions() {
+    public List<Questions> getQuestions(@RequestParam(value = "amount", defaultValue = "10") int amount) {
         List<Questions> questionsList = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < amount; i++) {
             questionsList.add(mathService.getRandom());
         }
         return questionsList;
